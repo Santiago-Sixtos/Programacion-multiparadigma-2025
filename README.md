@@ -9,7 +9,7 @@ El repositorio tiene como finalidad aprender y reforzar los diferentes paradigma
 
 - Imperativo
 - Orientada a Objetos
-- Funciional
+- Funcional
 - Reactivo / Concurrente 
 ## Authors
 
