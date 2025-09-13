@@ -2,7 +2,7 @@
 
 calificacion =  int(input("Ingrese su calificación: "))
 
-if 90 <= calificacion <= 100:
+if 90 <= calificacion and calificacion <= 100:
     print("A")  
 elif 80 <= calificacion <= 89:
     print("B")
