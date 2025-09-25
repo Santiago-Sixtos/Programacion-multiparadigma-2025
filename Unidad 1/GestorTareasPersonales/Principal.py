@@ -113,20 +113,20 @@ def main():
         print("4. Eliminar tarea")
         print("5. Salir")
 
-        respuesta = int(input("Seleccione la opcion deseada:"))
+        respuesta = input("Seleccione la opcion deseada:")
 
-        if respuesta == 1:
+        if respuesta == "1":
             tareas = agregarTareas(tareas)
             guardarTareas(tareas)
-        elif respuesta == 2:
+        elif respuesta == "2":
             listarTareas(tareas)
-        elif respuesta == 3:
+        elif respuesta == "3":
             tareas = marcarTarea(tareas)
             guardarTareas(tareas)
-        elif respuesta == 4:
+        elif respuesta == "4":
             tareas = eliminarTarea(tareas)
             guardarTareas(tareas)
-        elif respuesta == 5:
+        elif respuesta == "5" :
             print("Gracias por usar el gestor de tareas")
             break
         else:
