@@ -1,11 +1,15 @@
 #lIbrerias utilizadas
+from pathlib import Path
 import json
+
+#Ruta JSON "tareas.json" 
+RUTA_JSON = Path(__file__).parent / "tareas.json"
 
 #Metodos definidos 
 def cargarTareas():
     #Verificacion de la existencia del archivo JSON
     try:
-        with open('tareas.json', 'r') as archivo: 
+        with open(RUTA_JSON, 'r', encoding='utf-8') as archivo: 
             return json.load(archivo)
     except FileNotFoundError:
         #Si el archivo no existe, se crea
@@ -13,8 +17,8 @@ def cargarTareas():
     
 def guardarTareas(listaDeTareas):
     #Abrimos el archivo y escribimos en el "w"
-    with open('tareas.json', 'w') as archivo:
-        return json.dump(listaDeTareas, archivo, indent=4)
+    with open(RUTA_JSON, 'w', encoding='utf-8') as archivo:
+        return json.dump(listaDeTareas, archivo, indent=4, ensure_ascii=False)
     
 def agregarTareas(tareas):
     descripcion = input("Esriba la nueva tarea:")
@@ -56,7 +60,7 @@ def marcarTarea(tareas):
         return tareas
     
     try:
-        numTareas = int(input("Ingrese el numero de la tarea a completar"))
+        numTareas = int(input("Ingrese el numero de la tarea a completar: "))
 
         #Indice de la tarea a completar
         indice = numTareas - 1
@@ -95,3 +99,39 @@ def eliminarTarea(tareas):
         print("Entrada no valida. Favor de ingresar otro numero.")
 
     return tareas
+
+#Menu principal
+def main():
+    #Cargamos la tareas 
+    tareas = cargarTareas()
+
+    while True:
+        print("\n--- Bienvenido al gestor de tareas ---")
+        print("1. Agregar tarea")
+        print("2. Listar tarea")
+        print("3. Marcar tarea como completado")
+        print("4. Eliminar tarea")
+        print("5. Salir")
+
+        respuesta = int(input("Seleccione la opcion deseada:"))
+
+        if respuesta == 1:
+            tareas = agregarTareas(tareas)
+            guardarTareas(tareas)
+        elif respuesta == 2:
+            listarTareas(tareas)
+        elif respuesta == 3:
+            tareas = marcarTarea(tareas)
+            guardarTareas(tareas)
+        elif respuesta == 4:
+            tareas = eliminarTarea(tareas)
+            guardarTareas(tareas)
+        elif respuesta == 5:
+            print("Gracias por usar el gestor de tareas")
+            break
+        else:
+            print("Opcion no valida. Escoge otra opción.")
+
+if __name__ == "__main__":
+    main()
+
