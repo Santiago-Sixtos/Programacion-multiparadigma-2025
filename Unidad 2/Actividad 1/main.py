@@ -25,7 +25,7 @@ class Libro:
             self.prestado = False
             print(f"El libro ", self.titulo," ha sido devuelto")
 
-    def mostrarDatos(self):
+    def mostrarEstado(self):
         #Determinamos el estado del libro
         estadoActual = "Prestado" if self.prestado else "Disponible"
 
@@ -53,9 +53,9 @@ if __name__ == "__main__":
 
     #Estado inicial de todos los libros
     print("Estado inicial de los libros")
-    libro1.mostrarDatos()
-    libro2.mostrarDatos()
-    libro3.mostrarDatos()
+    libro1.mostrarEstado()
+    libro2.mostrarEstado()
+    libro3.mostrarEstado()
 
     print("==================================================")
 
@@ -72,6 +72,6 @@ if __name__ == "__main__":
 
     #Mostramos estado final de todos los libros
     print("Estado final de los libros")
-    libro1.mostrarDatos()
-    libro2.mostrarDatos()
-    libro3.mostrarDatos()
+    libro1.mostrarEstado()
+    libro2.mostrarEstado()
+    libro3.mostrarEstado()
