@@ -39,6 +39,7 @@ class Producto:
         def __str__(self) -> str:
             return f"Nombre:", self.nombre, " Precio: ", self.precio, .2,"Stock: ", self.stock
         
+        #Compara si dos productos son iguales
         def __eq__(self, other) -> bool:
             if not isinstance(other, Producto):
                 return NotImplemented
