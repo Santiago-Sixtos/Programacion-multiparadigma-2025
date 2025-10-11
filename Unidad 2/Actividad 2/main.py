@@ -146,6 +146,6 @@ if __name__ == "__main__":
     productoB = miInventario.buscarProducto("Trapos")
 
     if productoA == productoB:
-        print(productoA, " y ", productoB, " se consideran el mismo producto.")
+        print(f"{productoA} y {productoB} \nse consideran el mismo producto.")
     
     print("\nCantidad de tipos de productos en el inventario: ", len(miInventario))
