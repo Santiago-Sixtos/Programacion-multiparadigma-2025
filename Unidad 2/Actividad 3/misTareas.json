@@ -1,0 +1,13 @@
+[
+    {
+        "tipo": "Tarea",
+        "descripcion": "Limpiar la casa",
+        "completado": false
+    },
+    {
+        "tipo": "TareaUrgente",
+        "descripcion": "Terminar tarea",
+        "completado": false,
+        "prioridad": "Alta"
+    }
+]

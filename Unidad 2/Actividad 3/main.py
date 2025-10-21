@@ -14,8 +14,8 @@ class Tarea:
 
     #Mostramos informacion de la tarea aqui se aplica el polimorfismo
     def mostrarInfo(self) -> str:
-        estado = "Completado" if self._completado else "Pendinte"
-        return f"[Tarea Normal0] {self._descripcion} - ({estado})"
+        estado = "Completado" if self._completado else "Pendiente"
+        return f"[Tarea Normal] {self._descripcion} - ({estado})"
     
     #Conversion del objeto tarea a JSON
     def toDict(self) -> dict:
@@ -34,12 +34,12 @@ class TareaUrgente(Tarea):
     #Sobreescrbimos el metodo mostrarInfo para mandare mensaje diferente
     def mostrarInfo(self) -> str:
         estado = "Completado" if self._completado else "Pendiente"
-        return f"[Tarea Normal0] {self._descripcion} - ({estado}) - Prioridad: {self._prioridad}"
+        return f"[Tarea Urgente] {self._descripcion} - ({estado}) - Prioridad: {self._prioridad}"
     
     #Sobreescritura del diccionario para incluir la prioridad
     def toDict(self):
         datos = super().toDict()
-        datos["tipo"] = "TareaUrgente"
+        datos["tipo"] = "Tarea Urgente"
         datos["prioridad"] = self._prioridad
         return datos
 
@@ -93,7 +93,7 @@ class GestorTareas:
             print(f"Error al guardar archivo: {e}")
     
     def cargarJson(self):
-        if not os.path.exists(self._archivo_json):
+        if not os.path.exists(self._archivos_json):
             print("Archivo de tareas no encontrado. Empezando lista vacía.")
             return
 
@@ -121,6 +121,59 @@ class GestorTareas:
         except IOError as e:
             print(f"Error al cargar el archivo: {e}")
 
+#Funcion principal
+def main():
+    gestor = GestorTareas(archivoJason="misTareas.json")
+    gestor.cargarJson()
+
+    while True:
+        print("SISTEMA GESTOR DE TAREA")
+        print("1. Agregar tarea normal")
+        print("2. Agregar tarea urgente")
+        print("3. Listar tareas")
+        print("4. Marcar tarea como completada")
+        print("5. Eliminar tarea")
+        print("6. Guardar y salir")
+
+        opcion = input("Seleccione una opcion: ")
+
+        if opcion == "1":
+            desc = input("Descripcion de la tarea: ")
+            gestor.agregarTarea(Tarea(desc))
+
+        elif opcion == "2":
+            desc = input("Descripcion de la tarea urgente: ")
+            prioridad = input("Nivel de prioridad. Ej. Alta, media o baja: ")
+            gestor.agregarTarea(TareaUrgente(desc, prioridad))
+        
+        elif(opcion == "3"):
+            gestor.listarTareas()
+
+        elif(opcion == "4"):
+            gestor.listarTareas()
+
+            try:
+                idx = int(input("Ingresa el numero de la tarea a completar: "))
+                gestor.marcarTareaCompletada(idx - 1)
+            except ValueError:
+                print("Error: Favor de ingresar un numero")
+            
+        elif opcion == "5":
+            gestor.listarTareas()
+
+            try:
+                idx = int(input("Ingrese el numero que desee elimnar: "))
+                gestor.eliminarTarea(idx - 1)
+            except ValueError:
+                print("Error: Debes ingresar un numero")
+        
+        elif opcion == "6":
+            gestor.guardarJson()
+            print("Gracias por usar el gestor de tareas.")
+            break
+
+if __name__ == "__main__":
+    main()
 
 
     
