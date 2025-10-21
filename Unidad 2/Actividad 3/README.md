@@ -75,27 +75,35 @@ Para guardar los objetos en un archivo JSON, no podemos simplemente guardar el o
 Aquí se muestra el funcionamiento del menú interactivo y la gestión de tareas.
 
 **Menú Principal:**
+
 ![Captura de pantalla del menú principal](./assets/menu.png)
 
 **Agregar tarea:**
+
 ![Captura de pantalla agregando tarea normal](./assets/AgregarTarea.png)
 
 **Agregar tarea urgente:**
+
 ![Captura de pantalla agregando tarea urgente](./assets/AgregarTareaUrgente.png)
 
 **Listado de Tareas:**
+
 ![Captura de pantalla del listado de tareas](./assets/ListarTareas.png)
 
 **Marcar tarea como completada:**
+
 ![Captura de pantalla marcando tarea como completada](./assets/CompletarTarea.png)
 
 **Verificacion de completado de tarea:**
+
 ![Captura de pantalla de verificacion de completado de tarea](./assets/VerificarCompletarTarea.png)
 
 **Eliminar tarea:**
+
 ![Captura de pantalla eliminando tarea](./assets/EliminarTarea.png)
 
 **Verificacion de Eliminar tarea:**
+
 ![Captura de pantalla de verificacion de eliminando tarea](./assets/VerificarEliminarTarea.png)
 
 **Guardar y salir:**
