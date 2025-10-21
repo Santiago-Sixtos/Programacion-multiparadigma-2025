@@ -39,7 +39,7 @@ class TareaUrgente(Tarea):
     #Sobreescritura del diccionario para incluir la prioridad
     def toDict(self):
         datos = super().toDict()
-        datos["tipo"] = "Tarea Urgente"
+        datos["tipo"] = "TareaUrgente"
         datos["prioridad"] = self._prioridad
         return datos
 
@@ -60,6 +60,7 @@ class GestorTareas:
             print("No hay tareas registradas")
             return
         
+        print("==================")
         print("LISTADO DE TAREAS")
         for i, tarea in enumerate(self._tareas):
             print(f"{i + 1}. {tarea.mostrarInfo()}")
@@ -98,7 +99,7 @@ class GestorTareas:
             return
 
         try:
-            with open(self._archivo_json, 'r', encoding='utf-8') as f:
+            with open(self._archivos_json, 'r', encoding='utf-8') as f:
                 listaDatos = json.load(f)
             
             self._tareas = []
@@ -111,11 +112,11 @@ class GestorTareas:
                     tareaObj = Tarea(datosTarea["descripcion"])
                 
                 if tareaObj:
-                    if datosTarea["completada"]:
-                        tareaObj.marcar_completada()
+                    if datosTarea["completado"]:
+                        tareaObj.marcarCompletada()
                     self._tareas.append(tareaObj)
                     
-            print("Tareas cargadas desde", self._archivo_json)
+            print("Tareas cargadas desde", self._archivos_json)
         except json.JSONDecodeError:
             print(f"Error: El archivo '{self._archivo_json}' está corrupto o vacío.")
         except IOError as e:
@@ -127,6 +128,7 @@ def main():
     gestor.cargarJson()
 
     while True:
+        print("=========================")
         print("SISTEMA GESTOR DE TAREA")
         print("1. Agregar tarea normal")
         print("2. Agregar tarea urgente")
@@ -134,6 +136,7 @@ def main():
         print("4. Marcar tarea como completada")
         print("5. Eliminar tarea")
         print("6. Guardar y salir")
+        print("========================")
 
         opcion = input("Seleccione una opcion: ")
 
