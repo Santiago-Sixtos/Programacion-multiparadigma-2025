@@ -1,3 +1,10 @@
+"""
+Módulo de Utilidades (utilidades.py)
+
+Contiene funciones auxiliares para la interfaz de usuario, 
+como mostrar el menú y manejar la entrada de números de forma segura.
+"""
+
 def mostrarMenu():
     #Menu principal
     print("\n--- SISTEMA GESTOR DE TAREA ---")

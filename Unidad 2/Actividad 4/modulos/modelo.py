@@ -1,6 +1,19 @@
+"""
+Módulo de Modelo (modelo.py)
+
+Contiene las clases principales que definen la estructura de datos
+y la lógica de negocio del sistema de gestión de tareas.
+
+Clases:
+    - Tarea:           Clase base para una tarea genérica.
+    - TareaUrgente:    Clase hija que hereda de Tarea y añade prioridad.
+    - GestorTareas:    Clase que gestiona la colección de tareas (agregar, eliminar, guardar, cargar).
+"""
+
 #Librerias
 import json
 import os
+from pathlib import Path
 
 class Tarea:
     def __init__(self, descripcion: str):
@@ -46,7 +59,8 @@ class TareaUrgente(Tarea):
 class GestorTareas: 
     def __init__(self, archivoJason: str = "tareas.json"):
         self._tareas = []
-        self._archivos_json = archivoJason
+        rutaRaizProyecto = Path(__file__).parent.parent
+        self._archivos_json = rutaRaizProyecto / archivoJason
 
     def agregarTarea(self, tarea: Tarea):
         if isinstance(tarea, Tarea):

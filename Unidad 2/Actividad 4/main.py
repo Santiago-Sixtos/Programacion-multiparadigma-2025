@@ -1,4 +1,11 @@
-# Importamos las clases y funciones desde nuestros módulos
+"""
+Módulo Principal (main.py)
+
+Archivo de entrada del programa. Controla el flujo principal y el 
+menú interactivo. Importa las clases y funciones desde el paquete 'modulos'.
+"""
+
+# Importamos las clases y funciones desde los módulos
 from modulos.modelo import GestorTareas, Tarea, TareaUrgente
 from modulos.utilidades import mostrarMenu, pedirIndiceTarea
 
