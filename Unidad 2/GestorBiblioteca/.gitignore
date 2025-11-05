@@ -1,0 +1,5 @@
+#Se ignora archivo de datos en la biblioteca(.json)
+*.json
+
+#Se ignora la carpeta cache
+__pycache__
