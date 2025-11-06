@@ -7,7 +7,7 @@ de los datos principales del sistema
 """
 
 class ItemBiblioteca:
-    #Inicializacion el item
+    #Inicializacion del item
     def __init__(self, titulo: str):
         self._titulo = titulo
         self._estado = "disponible"
@@ -24,7 +24,7 @@ class ItemBiblioteca:
         }
     
 class Libro(ItemBiblioteca):
-    #Inicializacion el nuevo libro
+    #Inicializacion del nuevo libro
     def __init__(self, titulo: str, autor: str, año: int):
         super().__init__(titulo)
         self._autor = autor
@@ -33,7 +33,7 @@ class Libro(ItemBiblioteca):
     def mostrarInfo(self) -> str:
         return (f"[Libro] {self._titulo} escrito por {self._autor} [{self._año}]" f"- Estado: {self._estado}")
     
-    #Sobreescribir el diccionario
+    #Sobreescribir del diccionario
     def toDict(self) -> dict:
 
         datos = super().toDict()
@@ -49,4 +49,16 @@ class Usuario:
         self._nombre = nombre
         self._librosPrestados = []
 
+    def mostratInfo(self) -> str:
+        if not self._librosPrestados:
+            return f"Usuario: {self._nombre} no tiene libros prestados."
+        
+        titulos = ", ".join(self._librosPrestados)
+        return f"Usuario: {self._nombre} tiene {titulos}"
     
+    #Se convierte el objeto 'Usuario' a un  diccionario para JSON
+    def toDict(self) -> dict:
+        return {
+            "nombre": self._nombre,
+            "libros_prestados": self._librosPrestados
+        }
