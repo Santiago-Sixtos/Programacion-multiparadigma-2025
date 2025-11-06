@@ -6,12 +6,14 @@ Contiene la clase principal de la biblioteca que actua como el controlador del s
 #Importamos funciones del modulo de 'persistencia' y las clases del modulo 'modelos'
 from . import persistencia
 from .modelos import Libro, Usuario, ItemBiblioteca
+from pathlib import Path
 
 class Biblioteca:
     def __init__(self, nombreArchivo: str = "bibliotecaDatos.json"):
         self._libros = {}
         self._usuarios = {}
-        self._archivoJson = nombreArchivo
+        rutaRaizProyecto = Path(__file__).parent.parent
+        self._archivoJson = rutaRaizProyecto / nombreArchivo
 
     #Agregar libros y usuarios
     def agregarLibro(self, libro: Libro):
