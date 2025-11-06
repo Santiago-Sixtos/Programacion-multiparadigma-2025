@@ -49,7 +49,7 @@ class Usuario:
         self._nombre = nombre
         self._librosPrestados = []
 
-    def mostratInfo(self) -> str:
+    def mostrarInfo(self) -> str:
         if not self._librosPrestados:
             return f"Usuario: {self._nombre} no tiene libros prestados."
         
