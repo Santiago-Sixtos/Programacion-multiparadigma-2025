@@ -30,3 +30,39 @@ def crearReductor(funcion, valorInicial):
     """
     #Retornamos una lambda que aplica reduce a la lista recibida
     return lambda lista: reduce(funcion, lista, valorInicial)
+
+#Función de Composición (El Pipeline)
+def componer(*funciones):
+    """
+    Recibe múltiples funciones y retorna una nueva función 
+    que las aplica en secuencia (de izquierda a derecha).
+    """
+    return lambda datoInicial: reduce(lambda acc, f: f(acc), funciones, datoInicial)
+
+
+#Main
+if __name__ == "__main__":
+    print("Inicio de Pruebas")
+    
+    numeros = [1, -2, 3, -4, 5, -6, 7, 8, -9, 10]
+    print(f"Datos de entrada: {numeros}")
+
+    #Definimos el Pipeline: 
+    pipeline = componer(
+        #Filtrar solo positivos
+        crearFiltro(lambda x: x > 0),
+        #Elevar al cuadrado
+        crearTransformador(lambda x: x ** 2),
+        #Sumar todo (reducir)
+        crearReductor(lambda acc, x: acc + x, 0)
+    )
+
+    #Ejecutamos el pipeline con los datos
+    resultado = pipeline(numeros)
+    
+    print(f"Resultado obtenido: {resultado}")
+    
+    #Verificación manual:
+    esperado = 248
+    assert resultado == esperado
+    print("El cálculo es correcto.")
